@@ -1,0 +1,41 @@
+import casaDeEmpanadas.*
+
+test " Galvan gasta 4000, total deuda debe ser 4000 y total de dinero 0" {
+	galvan.gastar(4000)
+	assert.equals(4000,galvan.totalDeuda())
+	assert.equals(0,galvan.totalDinero())
+}
+
+test "Galvan gasta 4000 y 8000, total de deuda debe ser 12000 y el total de dinero 0 " {
+	galvan.gastar(4000)
+	galvan.gastar(8000)
+	assert.equals(12000,galvan.totalDeuda())
+	assert.equals(0,galvan.totalDinero())
+	
+	}
+	
+test "Galvan cobra, paga deuda de 12000, el total de dinero debe ser 3000 y el total de deuda 0" {
+	galvan.gastar(4000)
+	galvan.gastar(8000)
+	galvan.cobrarSueldo()
+	assert.equals(0,galvan.totalDeuda())
+	assert.equals(3000,galvan.totalDinero())
+}
+
+test "Galvan gasta 25000, cubre 3000 con el saldo que tiene, su total de deuda pasa a 22000 y el total dinero a 0" {
+	galvan.gastar(4000)
+	galvan.gastar(8000)
+	galvan.cobrarSueldo()
+	galvan.gastar(25000)
+	assert.equals(22000,galvan.totalDeuda())
+	assert.equals(0,galvan.totalDinero())
+}
+
+test "Galvan cobra, cubre 15000 de la deuda de 22000, y el total de deuda queda en 7000 y el total de dinero en 0" {
+	galvan.gastar(22000)
+	galvan.cobrarSueldo()
+	assert.equals(7000,galvan.totalDeuda())
+	assert.equals(0,galvan.totalDinero())
+	
+}
+	
