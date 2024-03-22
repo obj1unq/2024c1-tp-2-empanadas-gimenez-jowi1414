@@ -1,13 +1,12 @@
 import empleados.*
 
-// auto-generated at 11/03/2016 19:57:09
-test "exported test from REPL session" {
-	
-	baigorria.venderEmpanada()
-	baigorria.venderEmpanada()
-	baigorria.sueldo()
-	baigorria.venderEmpanada()
-	baigorria.sueldo()
-	gimenez.sueldo()
-	
+test "sueldo de Baigorria y de Galván" {
+	baigorria.venderEmpanadas(10)
+	baigorria.venderEmpanadas(20)
+	assert.equals(450, baigorria.sueldo())
+	baigorria.venderEmpanadas(10)
+	assert.equals(600, baigorria.sueldo())
+	assert.equals(15000, galvan.sueldo())
+	galvan.sueldo(12000)
+	assert.equals(12000, galvan.sueldo())
 }
